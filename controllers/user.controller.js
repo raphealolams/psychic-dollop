@@ -15,7 +15,6 @@ User.login = function(req, res, next) {
             username: req.body.username,
             password: req.body.password
         }
-
         if (user.username.toLowerCase() === "admin" && user.password.toLowerCase() === "admin") {
             generateAccessToken(user, (err, token) => {
                 if (err || !token) return res.status(401).json(transformResponse(0, "error", {"responseMessage": "Username or Password not valid"}, "Error"))
